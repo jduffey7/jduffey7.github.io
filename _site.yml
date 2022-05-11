@@ -4,6 +4,7 @@ navbar:
   title: "Import Scheduler"
   left:
     - text: "Home"
+      icon: fa-home
       href: index.html
 output:
   html_document:
