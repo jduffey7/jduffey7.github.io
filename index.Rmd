@@ -8,5 +8,24 @@ below is a test
 library(shiny)
 hist(rnorm(50))
 print(Sys.time())
-runApp("day.R")
+#runApp("day.R")
+
+ui <- fluidPage(
+  
+  h2(textOutput("currentTime"))
+  
+)
+
+# Define server logic to show current time, update every second ----
+server <- function(input, output, session) {
+  
+  output$currentTime <- renderText({
+    invalidateLater(1000, session)
+    paste("The current date is", Sys.Date())
+  })
+  
+}
+
+# Create Shiny app ----
+shinyApp(ui, server)
 ```
