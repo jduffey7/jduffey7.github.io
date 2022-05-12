@@ -7,9 +7,7 @@ below is a test
 ```{r}
 hist(rnorm(50))
 print(Sys.time())
-```
-below is a better test
-```{r}
+
 library(shiny)
 ui <- fluidPage(
 
