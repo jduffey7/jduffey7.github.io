@@ -6,7 +6,7 @@ navbar:
   left:
     - text: "Home"
       icon: fa-home
-      href: index.html
+      href: index.Rmd
 output:
   html_document:
     theme: darkly

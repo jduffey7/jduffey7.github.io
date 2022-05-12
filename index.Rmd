@@ -1,5 +1,6 @@
 ---
 title: "My Website"
+output: html_document
 runtime: shiny
 ---
 
@@ -9,7 +10,6 @@ below is a test
 library(shiny)
 hist(rnorm(50))
 print(Sys.time())
-#runApp("day.R")
 
 ui <- fluidPage(
   
