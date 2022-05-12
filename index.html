@@ -258,7 +258,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="header">
+<div id="section-header">
 
 
 
@@ -268,32 +268,10 @@ $(document).ready(function () {
 
 
 <p>This is the start of the website for the Import Scheduler below is a test</p>
-<pre class="r"><code>hist(rnorm(50))</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code>print(Sys.time())</code></pre>
-<pre><code>## [1] &quot;2022-05-12 00:52:50 EDT&quot;</code></pre>
-<p>below is a better test</p>
-<pre class="r"><code>library(shiny)</code></pre>
 <pre><code>## Warning: package &#39;shiny&#39; was built under R version 4.1.3</code></pre>
-<pre class="r"><code>ui &lt;- fluidPage(
-
-  h2(textOutput(&quot;currentTime&quot;))
-
-)
-
-# Define server logic to show current time, update every second ----
-server &lt;- function(input, output, session) {
-
-  output$currentTime &lt;- renderText({
-    invalidateLater(1000, session)
-    paste(&quot;The current date is&quot;, Sys.Date())
-  })
-
-}
-
-# Create Shiny app ----
-shinyApp(ui, server)</code></pre>
-<p><div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div></p>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre><code>## [1] &quot;2022-05-12 01:19:48 EDT&quot;</code></pre>
+<p><iframe data-deferred-src="appb5e08cda423d8f1a0259106e91f9fb47/?w=&amp;__subapp__=1" width="100%" height="400" class="shiny-frame shiny-frame-deferred"></iframe></p>
 
 
 
@@ -317,7 +295,7 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function () {
-  window.buildTabsets("TOC");
+  window.buildTabsets("section-TOC");
 });
 
 $(document).ready(function () {
