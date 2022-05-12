@@ -6,46 +6,14 @@ runtime: shiny
 
 This is the start of the website for the Import Scheduler
 below is a test
-```{r, echo = FALSE}
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
 library(plotly)
 library(sf)
 library(htmlwidgets)
 library(htmltools)
-
-# usa_map <- st_read("files\\States_shapefile.shp")
-# #usa_map <- left_join(usa_map, state_final, by = c("State_Code" = "State"))
-# map_theme<-theme(axis.line=element_blank(),axis.text.x=element_blank(),
-#                  axis.text.y=element_blank(),axis.ticks=element_blank(),
-#                  axis.title.x=element_blank(),
-#                  legend.position = "none",
-#                  axis.title.y=element_blank(),
-#                  panel.background=element_blank(),panel.border=element_blank(),
-#                  panel.grid.major=element_blank(),
-#                  panel.grid.minor=element_blank(),plot.background=element_blank(),
-#                  plot.title = element_text(size = 11))
-# consumer_map <- ggplot() + geom_sf(data = usa_map, aes(geometry = geometry),
-#                                                        #fill = `Num Emails Missing`/`Total Providers`,
-#                                                        #color = State_Name,
-#                                                        text = paste("yo"))+#State_Name,
-#                                                       #              "\n Proportion Missing: ",
-#                                                       #              `Num Emails Missing`/`Total Providers`,
-#                                                       #              "\n Missing Count: ",
-#                                                       #              `Num Emails Missing`,
-#                                                       #              "\n Total Count: ",
-#                                                       #              `Total Providers`))) +
-#   coord_sf(xlim = c(-125, -65), ylim = c(24, 50), expand = FALSE) +
-#   scale_fill_gradient(low = "pink", high = "dark red") +
-#   map_theme +
-#   ggtitle("Information on missing proportion of physician emails per state (darker color = more percent missing)")
-# gg_2 <- ggplotly(consumer_map, tooltip = "text")
-# gg_2 <- gg_2 %>%
-#   style(hoveron = "fills",
-#         line.color = toRGB("gray40"),
-#         traces = seq.int(2, length(gg_2$x$data))) %>% hide_legend()
-# saveWidget(gg_2, "gg2.html")
 tags$iframe(
-  src = "gg2.html", 
-  scrolling = "no", 
+  src = "map.html",
+  scrolling = "no",
   seamless = "seamless",
   frameBorder = "0"
 )
