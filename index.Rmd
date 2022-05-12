@@ -6,10 +6,5 @@ This is the start of the website for the Import Scheduler
 below is a test
 ```{r}
 hist(rnorm(50))
-<<<<<<< HEAD:index.rmd
 print(Sys.time())
-
 ```
-=======
-```
->>>>>>> 3500989c17329f2818eba02b016759c10da2497a:index.Rmd
