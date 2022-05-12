@@ -1,6 +1,4 @@
 name: "import-website"
-output_dir: "."
-runtime: shiny
 navbar:
   title: "Import Scheduler"
   left:
