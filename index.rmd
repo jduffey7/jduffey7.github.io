@@ -6,4 +6,6 @@ This is the start of the website for the Import Scheduler
 below is a test
 ```{r}
 hist(rnorm(50))
+print(Sys.time())
+
 ```
