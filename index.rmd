@@ -9,3 +9,6 @@ hist(rnorm(50))
 print(Sys.time())
 
 ```
+=======
+```
+>>>>>>> 3500989c17329f2818eba02b016759c10da2497a:index.Rmd
