@@ -5,26 +5,8 @@ title: "My Website"
 This is the start of the website for the Import Scheduler
 below is a test
 ```{r}
+library(shiny)
 hist(rnorm(50))
 print(Sys.time())
-
-library(shiny)
-ui <- fluidPage(
-
-  h2(textOutput("currentTime"))
-
-)
-
-# Define server logic to show current time, update every second ----
-server <- function(input, output, session) {
-
-  output$currentTime <- renderText({
-    invalidateLater(1000, session)
-    paste("The current date is", Sys.Date())
-  })
-
-}
-
-# Create Shiny app ----
-shinyApp(ui, server)
+runApp("day.R")
 ```
