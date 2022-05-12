@@ -4,7 +4,7 @@ title: "My Website"
 
 This is the start of the website for the Import Scheduler
 below is a test
-```{r}
+```{r, echo = FALSE}
 library(shiny)
 hist(rnorm(50))
 print(Sys.time())
