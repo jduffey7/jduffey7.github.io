@@ -1,0 +1,55 @@
+---
+title: "DO_source_file_transformation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(stringr)
+```
+
+```{r}
+do <- read.csv("C:\\Users\\JosephDuffey\\OneDrive - Healthlink Dimensions\\Documents\\code\\Shawn Projects\\Import Scheduler\\jduffey7.github.io\\DOSourceFileTracker.xlsx - base list.csv")
+```
+
+```{r}
+do <- do[-c(356:361),]
+do[19, 1] <- "AR"
+do[99:104, 1] <- "ID"
+do <- do %>% 
+  mutate(across(where(is.character), str_trim))
+```
+
+```{r}
+do <- do[order(do$State),]
+state <- c()
+category <- list()
+curr <- do[1, 1]
+services <- list(do$Category[1])
+for (i in 1:length(do$State))
+{
+  if (curr == do$State[i])
+  {
+    services <- append(services, do$Category[i])
+  }
+  else
+  {
+    state <- append(state, curr)
+    category[[length(state)]] <- services
+    
+    curr <- do$State[i]
+    services <- list(do$Category[i])
+  }
+}
+
+state <- append(state, curr)
+category <- append(category, services)
+```
+
+```{r}
+test_widget <- data.frame("State" = state)
+```

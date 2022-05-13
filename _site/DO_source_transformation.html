@@ -11,7 +11,7 @@
 
 
 
-<title>My Website</title>
+<title>DO_source_file_transformation</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -265,19 +265,55 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div id="section-header">
+<div id="header">
 
 
 
-<h1 class="title toc-ignore">My Website</h1>
+<h1 class="title toc-ignore">DO_source_file_transformation</h1>
 
 </div>
 
 
-<p>This is the start of the website for the Import Scheduler below is a test</p>
-<p>test below</p>
-<pre class="r"><code>#save_html(gg_2, &quot;map.html&quot;)</code></pre>
-<p><iframe src="map.html" scrolling="no" seamless="seamless" frameBorder="0" width="100%" height="500"></iframe></p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(stringr)</code></pre>
+<pre class="r"><code>do &lt;- read.csv(&quot;C:\\Users\\JosephDuffey\\OneDrive - Healthlink Dimensions\\Documents\\code\\Shawn Projects\\Import Scheduler\\jduffey7.github.io\\DOSourceFileTracker.xlsx - base list.csv&quot;)</code></pre>
+<pre class="r"><code>do &lt;- do[-c(356:361),]
+do[19, 1] &lt;- &quot;AR&quot;
+do[99:104, 1] &lt;- &quot;ID&quot;
+do &lt;- do %&gt;% 
+  mutate(across(where(is.character), str_trim))</code></pre>
+<pre class="r"><code>do &lt;- do[order(do$State),]
+state &lt;- c()
+category &lt;- list()
+curr &lt;- do[1, 1]
+services &lt;- list(do$Category[1])
+for (i in 1:length(do$State))
+{
+  if (curr == do$State[i])
+  {
+    services &lt;- append(services, do$Category[i])
+  }
+  else
+  {
+    state &lt;- append(state, curr)
+    category[[length(state)]] &lt;- services
+    
+    curr &lt;- do$State[i]
+    services &lt;- list(do$Category[i])
+  }
+}
+
+state &lt;- append(state, curr)
+category &lt;- append(category, services)</code></pre>
+<pre class="r"><code>test_widget &lt;- data.frame(&quot;State&quot; = state)</code></pre>
 
 
 
@@ -301,7 +337,7 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function () {
-  window.buildTabsets("section-TOC");
+  window.buildTabsets("TOC");
 });
 
 $(document).ready(function () {

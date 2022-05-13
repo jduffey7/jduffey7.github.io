@@ -11,10 +11,195 @@ library(plotly)
 library(sf)
 library(htmlwidgets)
 library(htmltools)
+```
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(plotly)
+library(htmltools)
+library(htmlwidgets)
+library(sf)
+library(dplyr)
+```
+
+```{r, echo = FALSE}
+# USA <- "C:\\Users\\JosephDuffey\\OneDrive - Healthlink Dimensions\\Documents\\code\\Shawn Projects\\Import Scheduler\\jduffey7.github.io\\files\\States_shapefile.shp"
+# usa_map <- st_read(USA, quiet = TRUE)
+# usa_map <- left_join(usa_map, test_widget, by = c("State_Code" = "State"))
+```
+test below
+```{r, echo = FALSE}
+# usa_map$test <- 0*1:length(usa_map$State_Code)
+# for (i in 1:12)
+# {
+#   if (i <= 7)
+#   {
+#     #increment by 3
+#     index <- (3*i - 2):(3*i)
+#     usa_map$test[index] <- i
+#   }
+#   else 
+#   {
+#     #increment by 6, subtract the extra 21
+#     #extra 21 because on iter 8 the last number run was 7 so you need to start on 3*7 + 1
+#     # when you do 6*8 - 5 that starts you on 6*7 + 1, you subtract the 21 so it becomes (6-3)*7 + 1
+#     index <- (6*i - 5 - 21):(6*i - 21)
+#     usa_map$test[index] <- i
+#   }
+# }
+```
+
+```{r, echo = FALSE}
+# January <- rep("grey", 51)
+# February <- rep("grey", 51)
+# March <- rep("grey", 51)
+# April <- rep("grey", 51)
+# May <- rep("grey", 51)
+# June <- rep("grey", 51)
+# July <- rep("grey", 51)
+# August <- rep("grey", 51)
+# September <- rep("grey", 51)
+# October <- rep("grey", 51)
+# November <- rep("grey", 51)
+# December <- rep("grey", 51)
+# 
+# December[1:8] <- "red"
+# November[9:16] <- "red"
+# October[17:24] <- "red"
+# September[25:32] <- "red"
+# August[33:40] <- "red"
+# July[41:43] <- "red"
+# June[44:46] <- "red"
+# May[46:49] <- "red"
+# April[50] <- "red"
+# March[51] <- "red"
+# February[c(1, 5, 12)] <- "red"
+# January[c(7, 9)] <- "red"
+```
+
+```{r, echo = FALSE}
+# updatemenus1 <- list(
+#   list(
+#     type= 'buttons',
+#     y = 0.8,
+#     buttons = list(
+#       list(
+#         label = "Reset",
+#         method = "restyle",
+#         args = list("fillcolor", rep("grey", 51))))),
+#   list(
+#     y = 0.7,
+#     buttons = list(
+#       list(
+#         label = "Jan",
+#         method = "restyle",
+#         args = list("fillcolor", January)),
+#       list(
+#         label = "Feb",
+#         method = "restyle",
+#         args = list("fillcolor", February)),
+#       list(
+#         label = "Mar",
+#         method = "restyle",
+#         args = list("fillcolor", March)),
+#       list(
+#         label = "Apr",
+#         method = "restyle",
+#         args = list("fillcolor", April)),
+#       list(
+#         label = "May",
+#         method = "restyle",
+#         args = list("fillcolor", May)),
+#       list(
+#         label = "June",
+#         method = "restyle",
+#         args = list("fillcolor", June)),
+#       list(
+#         label = "July",
+#         method = "restyle",
+#         args = list("fillcolor", July)),
+#       list(
+#         label = "Aug",
+#         method = "restyle",
+#         args = list("fillcolor", August)),
+#       list(
+#         label = "Sep",
+#         method = "restyle",
+#         args = list("fillcolor", September)),
+#       list(
+#         label = "Oct",
+#         method = "restyle",
+#         args = list("fillcolor", October)),
+#       list(
+#         label = "Nov",
+#         method = "restyle",
+#         args = list("fillcolor", November)),
+#       list(
+#         label = "Dec",
+#         method = "restyle",
+#         args = list("fillcolor", December))))
+# )
+
+
+```
+
+```{r, echo = FALSE}
+# cols <- c("1" = "grey",
+#           "2" = "grey",
+#           "3" = "grey",
+#           "4" = "grey",
+#           "5" = "grey",
+#           "6" = "grey",
+#           "7" = "grey",
+#           "8" = "grey",
+#           "9" = "grey",
+#           "10" = "grey",
+#           "11" = "grey",
+#           "12" = "grey")
+# map_theme<-theme(axis.line=element_blank(),axis.text.x=element_blank(),
+#                  axis.text.y=element_blank(),axis.ticks=element_blank(),
+#                  axis.title.x=element_blank(),
+#                  #legend.position = "none",
+#                  axis.title.y=element_blank(),
+#                  panel.background=element_blank(),panel.border=element_blank(),
+#                  panel.grid.major=element_blank(),
+#                  panel.grid.minor=element_blank(),plot.background=element_blank())
+# consumer_map <- ggplot() + geom_sf(data = usa_map, aes(geometry = geometry, 
+#                                                        fill = factor(test),
+#                                                        color = State_Name,
+#                                                        text = paste(test))) + 
+#   coord_sf(xlim = c(-125, -65), ylim = c(24, 50), expand = FALSE) +
+#   scale_fill_manual(values = cols) +
+#   map_theme +
+#   ggtitle("Information on consumer vs POS file per state")
+# gg_2 <- ggplotly(consumer_map, tooltip = "text",
+#                  autosize = FALSE,
+#                  width = 800,
+#                  height = 400)
+#                  # ,
+#                  # margin = list(
+#                  #          l = 500,
+#                  #          r = 500,
+#                  #          b = 100,
+#                  #          t = 100,
+#                  #          pad = 4))
+# gg_2 <- gg_2 %>%
+#   style(hoveron = "fills",
+#         line.color = toRGB("gray40"),
+#         traces = seq.int(2, length(gg_2$x$data))) %>% hide_legend()
+# gg_2 <- gg_2 %>% layout(updatemenus = updatemenus1)
+```
+
+```{r}
+#save_html(gg_2, "map.html")
+```
+
+```{r, echo = FALSE}
 tags$iframe(
   src = "map.html",
   scrolling = "no",
   seamless = "seamless",
-  frameBorder = "0"
+  frameBorder = "0",
+  width = "100%",
+  height = 500
 )
 ```
