@@ -1,0 +1,231 @@
+---
+title: "My Website"
+output: html_document
+runtime: shiny
+---
+<style type="text/css">
+.main-container {
+  max-width: 100% !important;
+  margin: auto;
+}
+</style>
+
+<style type="text/css">
+h1.title {
+  text-align: center;
+}
+</style>
+
+<h6 align="center">This is the start of the website for the Import Scheduler below is a test</h6>
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(plotly)
+library(sf)
+library(htmlwidgets)
+library(htmltools)
+```
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+library(plotly)
+library(htmltools)
+library(htmlwidgets)
+library(sf)
+library(dplyr)
+library(DT)
+```
+
+```{r, echo = FALSE}
+# USA <- "C:\\Users\\JosephDuffey\\OneDrive - Healthlink Dimensions\\Documents\\code\\Shawn Projects\\Import Scheduler\\jduffey7.github.io\\files\\States_shapefile.shp"
+# usa_map <- st_read(USA, quiet = TRUE)
+# usa_map <- left_join(usa_map, test_widget, by = c("State_Code" = "State"))
+```
+<h6 align="center">test below</h6>
+```{r, echo = FALSE}
+# usa_map$test <- 0*1:length(usa_map$State_Code)
+# for (i in 1:12)
+# {
+#   if (i <= 7)
+#   {
+#     #increment by 3
+#     index <- (3*i - 2):(3*i)
+#     usa_map$test[index] <- i
+#   }
+#   else
+#   {
+#     #increment by 6, subtract the extra 21
+#     #extra 21 because on iter 8 the last number run was 7 so you need to start on 3*7 + 1
+#     # when you do 6*8 - 5 that starts you on 6*7 + 1, you subtract the 21 so it becomes (6-3)*7 + 1
+#     index <- (6*i - 5 - 21):(6*i - 21)
+#     usa_map$test[index] <- i
+#   }
+# }
+# tsd <- usa_map %>%
+#   highlight_key(~test)
+```
+
+```{r, echo = FALSE}
+# base <- rep("grey", 52)
+# January <- rep("grey", 51)
+# February <- rep("grey", 51)
+# March <- rep("grey", 51)
+# April <- rep("grey", 51)
+# May <- rep("grey", 51)
+# June <- rep("grey", 51)
+# July <- rep("grey", 51)
+# August <- rep("grey", 51)
+# September <- rep("grey", 51)
+# October <- rep("grey", 51)
+# November <- rep("grey", 51)
+# December <- rep("grey", 51)
+# 
+# December[1:3+1] <- "red"
+# November[4:6+1] <- "red"
+# October[7:9+1] <- "red"
+# September[10:12+1] <- "red"
+# August[13:15+1] <- "red"
+# July[16:18+1] <- "red"
+# June[19:21+1] <- "red"
+# May[22:27+1] <- "red"
+# April[28:33+1] <- "red"
+# March[34:39+1] <- "red"
+# February[40:45+1] <- "red"
+# January[46:51+1] <- "red"
+```
+
+```{r, echo = FALSE}
+# updatemenus1 <- list(
+#   list(
+#     type= 'buttons',
+#     y = 0.8,
+#     buttons = list(
+#       list(
+#         label = "Reset",
+#         method = "restyle",
+#         args = list("fillcolor", rep("grey", 51))))),
+#   list(
+#     y = 0.7,
+#     buttons = list(
+# list(
+# label = "---",
+# method = "restyle",
+# args = list("fillcolor", base)),
+#       list(
+#         label = "Jan",
+#         method = "restyle",
+#         args = list("fillcolor", January)),
+#       list(
+#         label = "Feb",
+#         method = "restyle",
+#         args = list("fillcolor", February)),
+#       list(
+#         label = "Mar",
+#         method = "restyle",
+#         args = list("fillcolor", March)),
+#       list(
+#         label = "Apr",
+#         method = "restyle",
+#         args = list("fillcolor", April)),
+#       list(
+#         label = "May",
+#         method = "restyle",
+#         args = list("fillcolor", May)),
+#       list(
+#         label = "June",
+#         method = "restyle",
+#         args = list("fillcolor", June)),
+#       list(
+#         label = "July",
+#         method = "restyle",
+#         args = list("fillcolor", July)),
+#       list(
+#         label = "Aug",
+#         method = "restyle",
+#         args = list("fillcolor", August)),
+#       list(
+#         label = "Sep",
+#         method = "restyle",
+#         args = list("fillcolor", September)),
+#       list(
+#         label = "Oct",
+#         method = "restyle",
+#         args = list("fillcolor", October)),
+#       list(
+#         label = "Nov",
+#         method = "restyle",
+#         args = list("fillcolor", November)),
+#       list(
+#         label = "Dec",
+#         method = "restyle",
+#         args = list("fillcolor", December))))
+# )
+
+
+```
+
+```{r, echo = FALSE}
+# cols <- c("1" = "grey",
+#           "2" = "grey",
+#           "3" = "grey",
+#           "4" = "grey",
+#           "5" = "grey",
+#           "6" = "grey",
+#           "7" = "grey",
+#           "8" = "grey",
+#           "9" = "grey",
+#           "10" = "grey",
+#           "11" = "grey",
+#           "12" = "grey")
+# map_theme<-theme(axis.line=element_blank(), axis.text.x=element_blank(),
+#                  axis.text.y=element_blank(), axis.ticks=element_blank(),
+#                  axis.title.x=element_blank(),
+#                  #legend.position = "none",
+#                  axis.title.y=element_blank(),
+#                  panel.background = element_rect(fill = "transparent", color = NA),
+#                  #panel.background=element_blank(), 
+#                  panel.border=element_blank(),
+#                  panel.grid.major=element_blank(),
+#                  panel.grid.minor=element_blank(), #plot.background=element_blank(),
+#                  plot.background = element_rect(fill = "transparent", color = NA))
+# 
+# consumer_map <- ggplot() + geom_sf(data = tsd, aes(geometry = geometry, 
+#                                                        fill = factor(test),
+#                                                        color = State_Name,
+#                                                        text = paste(test, State_Code))) + 
+#   coord_sf(xlim = c(-125, -65), ylim = c(24, 50), expand = FALSE) +
+#   scale_fill_manual(values = cols) +
+#   map_theme +
+#   ggtitle("Select the Month and then click a highlighted state \ndouble click to reset the table")
+# gg_2 <- ggplotly(consumer_map, tooltip = "text")
+# gg_2 <- gg_2 %>%
+#   style(hoveron = "fills",
+#         line.color = toRGB("gray40"),
+#         traces = seq.int(2, length(gg_2$x$data))) %>% hide_legend()
+# gg_2 <- gg_2 %>% layout(updatemenus = updatemenus1)
+# gg_2 <- gg_2 %>% highlight(defaultValues = c(1:12),
+#                            opacityDim = 1)
+```
+
+```{r, echo = FALSE}
+# save_html(
+# bscols(
+#   gg_2,
+#   datatable(tsd,
+#             width = "75%",
+#             options = list(columnDefs = list(list(visible=FALSE,
+#                                                   targets=c(1, 2, 4, 5, 6, 11, 12)))))
+# )
+# , "test1.html")
+```
+<center>
+
+```{r, echo = FALSE, fig.align = 'center'}
+tags$iframe(
+  src = "testfinal.html",
+  scrolling = "no",
+  seamless = "seamless",
+  frameBorder = "0",
+  width = 1500,
+  height = 600
+)
+```
+
+</center>
